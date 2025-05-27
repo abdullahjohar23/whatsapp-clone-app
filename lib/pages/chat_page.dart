@@ -19,7 +19,7 @@ class _ChatPageState extends State<ChatPage> {
         return Scaffold(
             backgroundColor: Color(0xfffefefe),
 
-            //* APpBar Design
+            //* AppBar Design
             appBar: AppBar(
                 backgroundColor: Color(0xfffefefe),
 
@@ -51,28 +51,59 @@ class _ChatPageState extends State<ChatPage> {
                 ),
 
                 bottom: PreferredSize(
-                    preferredSize: Size.fromHeight(_deviceHeight*0.01), // Height of the line
+                    preferredSize: Size.fromHeight(_deviceHeight*0.01),
                     child: Container(
-                        color: Colors.grey[300],         // Light gray line
+                        color: Colors.grey[300],
                         height: 1,
                     ),
                 ),
             ),
 
             //* Body Section
-            body: Container(
-                margin: EdgeInsets.only(left: _deviceWidth*0.045, right: _deviceWidth*0.045, top: _deviceHeight*0.04),
-                child: Column(
-                    children: [
-                        //* this section is design for single chat and it will be repeated for other chats
-                        ChatTile(imagePath: 'assets/ammu.png', name: 'Ammu', time: 'Yesterday', message: '2 kg alu aan forhad er dokan theke. boro beche anis'),
-                        ChatTile(imagePath: 'assets/faysal.png', name: 'Faysal', time: 'Yesterday', message: 'Kire, ajke ber hobi na?'),
-                        ChatTile(imagePath: 'assets/emon.png', name: 'Emon', time: '1:17 PM', message: 'Gorur hut e jabi kalke?'),
-                        ChatTile(imagePath: 'assets/taif.png', name: 'Taif', time: '5/24/25', message: 'CPS Academy er course ta niba naki dekho'),
-                        ChatTile(imagePath: 'assets/samiul.png', name: 'Samiul', time: '5/18/25', message: '2 kg alu aan forhad er dokan theke. boro beche anis'),
-                        ChatTile(imagePath: 'assets/sunday.png', name: 'Only Sunday', time: '4/22/25', message: 'Faysal: 8tay ber hobo ajke'),
-                    ],
-                ),
+            body: Stack(
+                children: [
+                    //* Chats 
+                    SingleChildScrollView(
+                        child: Container(
+                            margin: EdgeInsets.only(left: _deviceWidth*0.045, right: _deviceWidth*0.045, top: _deviceHeight*0.04),
+                            child: Column(
+                                children: [
+                                    //* this section is design for single chat and it will be repeated for other chats
+                                    ChatTile(imagePath: 'assets/ammu.png', name: 'Ammu', time: 'Yesterday', message: '2 kg alu aan forhad er dokan theke. boro beche anis'),
+                                    ChatTile(imagePath: 'assets/faysal.png', name: 'Faysal', time: 'Yesterday', message: 'Kire, ajke ber hobi na?'),
+                                    ChatTile(imagePath: 'assets/emon.png', name: 'Emon', time: '1:17 PM', message: 'Gorur hut e jabi kalke?'),
+                                    ChatTile(imagePath: 'assets/taif.png', name: 'Taif', time: '5/24/25', message: 'CPS Academy er course ta niba naki dekho'),
+                                    ChatTile(imagePath: 'assets/samiul.png', name: 'Samiul IIUC', time: '5/18/25', message: 'Brain Station e apply kor'),
+                                    ChatTile(imagePath: 'assets/tanjid.jpg', name: 'Tanjid IIUC', time: '5/17/25', message: 'Brain Station e apply kore kichu hobe na'),
+                                    ChatTile(imagePath: 'assets/sunday.png', name: 'Only Sunday', time: '4/22/25', message: 'Faysal: 8tay ber hobo ajke'),
+                                    ChatTile(imagePath: 'assets/azim.jpg', name: 'Azim IIUC', time: '4/20/25', message: 'Ekta routine banai dis to bondhu'),
+                                    ChatTile(imagePath: 'assets/alauddin.jpg', name: 'Alauddin IIUC', time: '4/17/25', message: 'Algo te abar retake khaisi beda'),
+                                    ChatTile(imagePath: 'assets/baizid.jpg', name: 'Baizid Junior', time: '4/13/25', message: 'Bhaiya biye hoye gese amar'),
+                                    ChatTile(imagePath: 'assets/nahid.jpg', name: 'Nahid IIUC', time: '4/13/25', message: 'Beda, biye arekta korbo'),
+                                ],
+                            ),
+                        ),
+                    ),
+
+                    //* New Message Button
+                    Positioned(
+                        bottom: _deviceHeight * 0.13, // the widget will be 13% of the screen height above the bottom edg
+                        right: _deviceWidth * 0.04, // the widget will be 4% of the screen width from the right edge.
+                        child: Material(
+                            elevation: 3,
+                            borderRadius: BorderRadius.circular(20),
+                            child: Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: Color(0xff1dab61),
+                                ),
+                                height: _deviceHeight * 0.08,
+                                width: _deviceHeight * 0.08,
+                                child: Icon(Icons.message, color: Colors.white, size: _deviceWidth * 0.07),
+                            ),
+                        ),
+                    ),
+                ],
             ),
         );
     }
