@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_clon_app/pages/chat_data.dart';
 import 'package:whatsapp_clon_app/pages/single_inbox_design.dart';
 
 class ChatPage extends StatefulWidget {
@@ -17,11 +18,16 @@ class _ChatPageState extends State<ChatPage> {
         _deviceWidth = MediaQuery.of(context).size.width;
 
         return Scaffold(
-            backgroundColor: Color(0xfffefefe),
+            backgroundColor: Colors.white,
 
             //* AppBar Design
             appBar: AppBar(
-                backgroundColor: Color(0xfffefefe),
+                backgroundColor: Colors.white,
+
+                // here scrolledUnderElevation is enough to remove the light grayish elevation that shows up when the screen is scrolled down
+                elevation: 0,
+                scrolledUnderElevation: 0, // it says, “Don’t show any shadow or elevation when the page scrolls — keep my AppBar looking flat and clean”
+                surfaceTintColor: Colors.transparent, // it says, “Hey, don’t apply any extra glossy tint or highlight on my AppBar — I want the raw background color to show”
 
                 title: Padding(
                     padding: EdgeInsets.only(top: _deviceHeight/55),
@@ -62,33 +68,24 @@ class _ChatPageState extends State<ChatPage> {
             //* Body Section
             body: Stack(
                 children: [
-                    //* Chats 
-                    SingleChildScrollView(
-                        child: Container(
-                            margin: EdgeInsets.only(left: _deviceWidth*0.045, right: _deviceWidth*0.045, top: _deviceHeight*0.04),
-                            child: Column(
-                                children: [
-                                    //* this section is design for single chat and it will be repeated for other chats
-                                    ChatTile(imagePath: 'assets/ammu.png', name: 'Ammu', time: 'Yesterday', message: '2 kg alu aan forhad er dokan theke. boro beche anis'),
-                                    ChatTile(imagePath: 'assets/faysal.png', name: 'Faysal', time: 'Yesterday', message: 'Kire, ajke ber hobi na?'),
-                                    ChatTile(imagePath: 'assets/emon.png', name: 'Emon', time: '1:17 PM', message: 'Gorur hut e jabi kalke?'),
-                                    ChatTile(imagePath: 'assets/taif.png', name: 'Taif', time: '5/24/25', message: 'CPS Academy er course ta niba naki dekho'),
-                                    ChatTile(imagePath: 'assets/samiul.png', name: 'Samiul IIUC', time: '5/18/25', message: 'Brain Station e apply kor'),
-                                    ChatTile(imagePath: 'assets/tanjid.jpg', name: 'Tanjid IIUC', time: '5/17/25', message: 'Brain Station e apply kore kichu hobe na'),
-                                    ChatTile(imagePath: 'assets/sunday.png', name: 'Only Sunday', time: '4/22/25', message: 'Faysal: 8tay ber hobo ajke'),
-                                    ChatTile(imagePath: 'assets/azim.jpg', name: 'Azim IIUC', time: '4/20/25', message: 'Ekta routine banai dis to bondhu'),
-                                    ChatTile(imagePath: 'assets/alauddin.jpg', name: 'Alauddin IIUC', time: '4/17/25', message: 'Algo te abar retake khaisi beda'),
-                                    ChatTile(imagePath: 'assets/baizid.jpg', name: 'Baizid Junior', time: '4/13/25', message: 'Bhaiya biye hoye gese amar'),
-                                    ChatTile(imagePath: 'assets/nahid.jpg', name: 'Nahid IIUC', time: '4/13/25', message: 'Beda, biye arekta korbo'),
-                                ],
-                            ),
+                    Padding(
+                        padding: EdgeInsets.symmetric(horizontal: _deviceWidth * 0.045),
+                        // Showing Chats 
+                        child: ListView.builder(
+                            padding: EdgeInsets.only(top: _deviceHeight * 0.04),
+                            itemCount: chatData.length, // watch chat_data.dart page
+                            itemBuilder: (context, index) {
+                                final chat = chatData[index];
+                                return ChatTile(imagePath: chat['imagePath']!, name: chat['name']!, time: chat['time']!, message: chat['message']!);
+                            },
                         ),
                     ),
 
                     //* New Message Button
                     Positioned(
-                        bottom: _deviceHeight * 0.13, // the widget will be 13% of the screen height above the bottom edg
-                        right: _deviceWidth * 0.04, // the widget will be 4% of the screen width from the right edge.
+                        bottom: _deviceHeight * 0.07, // the widget will be 7% of the screen height above the bottom edge
+                        right: _deviceWidth * 0.05, // the widget will be 5% of the screen width from the right edge
+                        
                         child: Material(
                             elevation: 3,
                             borderRadius: BorderRadius.circular(20),
@@ -105,6 +102,22 @@ class _ChatPageState extends State<ChatPage> {
                     ),
                 ],
             ),
+            
+            /*
+            By default, when you use floatingActionButton inside a Scaffold, Flutter places the button in the bottom-right corner of the screen with some padding from the edges
+            If you were to use this instead of Positioned():
+                - you would have no control to place it in different position
+                - you had to put it outside the Stack() [you wouldn't even need Stack() then, cause floatingActionButton by default comes on top of the screen]
+
+            New Message Button
+            floatingActionButton: FloatingActionButton(
+                backgroundColor: Color(0xff1dab61),
+                child: Icon(Icons.message, color: Colors.white, size: _deviceWidth * 0.07),
+                onPressed: () {
+                    button doesn't work
+                },
+            ),
+            */
         );
     }
 }
