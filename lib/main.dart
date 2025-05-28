@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp_clon_app/pages/chat_page.dart';
+import 'package:whatsapp_clon_app/pages/main_page.dart';
 
 void main() {
     runApp(const MyApp());
@@ -12,8 +12,7 @@ class MyApp extends StatelessWidget {
     Widget build(BuildContext context) {
         return MaterialApp(
             debugShowCheckedModeBanner: false,
-
-            home: ChatPage(),
+            home: MainPage(),
         );
     }
 }
