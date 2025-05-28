@@ -16,8 +16,8 @@ class ChatTile extends StatelessWidget {
   
     @override
     Widget build(BuildContext context) {
-        double deviceHeight = MediaQuery.of(context).size.height;
         double deviceWidth = MediaQuery.of(context).size.width;
+        double deviceHeight = MediaQuery.of(context).size.height;
 
         return Padding(
             padding: EdgeInsets.only(bottom: deviceHeight * 0.035),
