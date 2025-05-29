@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clon_app/pages/chat_page.dart';
 import 'package:whatsapp_clon_app/pages/calls_page.dart';
-import 'package:whatsapp_clon_app/pages/status_page.dart';
+import 'package:whatsapp_clon_app/pages/updates_page.dart';
 
 class MainPage extends StatefulWidget {
     const MainPage({super.key});
