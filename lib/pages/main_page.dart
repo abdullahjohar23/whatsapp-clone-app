@@ -21,53 +21,60 @@ class _MainPageState extends State<MainPage> {
 
     @override
     Widget build(BuildContext context) {
-        return Scaffold(            
-            body: _screens[_currentIndex],
-
-            bottomNavigationBar: BottomNavigationBar(
-                currentIndex: _currentIndex,
-                onTap: (index) {
-                    setState(() {
-                        _currentIndex = index;
-                    });
-                },
-
-                backgroundColor: Colors.white,
-                elevation: 0,
-
-                selectedItemColor: Color(0xff1dab61), // icon color (selected) - applies to both icon and label
-                unselectedItemColor: Colors.grey, // icon color (unselected) - applies to both icon and label
-                
-                selectedLabelStyle: TextStyle(
-                    color: Colors.black, // this only works with fixedType but it won't work because selectedItemColor overwrites the color. you need to handle it separately
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
+        return Theme(
+            data: Theme.of(context).copyWith(
+                splashColor: Colors.transparent, // removes ripple/splash color
+                highlightColor: Colors.transparent, // removes highlight on tap
+            ),
+            
+            child: Scaffold(            
+                body: _screens[_currentIndex],
+            
+                bottomNavigationBar: BottomNavigationBar(
+                    currentIndex: _currentIndex,
+                    onTap: (index) {
+                        setState(() {
+                            _currentIndex = index;
+                        });
+                    },
+            
+                    backgroundColor: Colors.white,
+                    elevation: 0,
+            
+                    selectedItemColor: Color(0xff1dab61), // icon color (selected) - applies to both icon and label
+                    unselectedItemColor: Colors.grey, // icon color (unselected) - applies to both icon and label
+                    
+                    selectedLabelStyle: TextStyle(
+                        color: Colors.black, // this only works with fixedType but it won't work because selectedItemColor overwrites the color. you need to handle it separately
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                    ),
+                    
+                    unselectedLabelStyle: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 12,
+                        fontWeight: FontWeight.normal,
+                    ),
+            
+                    type: BottomNavigationBarType.fixed, // needed to apply text styles
+            
+                    items: [
+                        BottomNavigationBarItem(
+                            icon: Icon(Icons.chat),
+                            label: 'Chats',
+                        ),
+            
+                        BottomNavigationBarItem(
+                            icon: Icon(Icons.update),
+                            label: 'Updates',
+                        ),
+            
+                        BottomNavigationBarItem(
+                            icon: Icon(Icons.call),
+                            label: 'Calls',
+                        ),
+                    ],
                 ),
-                
-                unselectedLabelStyle: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 12,
-                    fontWeight: FontWeight.normal,
-                ),
-
-                type: BottomNavigationBarType.fixed, // needed to apply text styles
-
-                items: [
-                    BottomNavigationBarItem(
-                        icon: Icon(Icons.chat),
-                        label: 'Chats',
-                    ),
-
-                    BottomNavigationBarItem(
-                        icon: Icon(Icons.update),
-                        label: 'Updates',
-                    ),
-
-                    BottomNavigationBarItem(
-                        icon: Icon(Icons.call),
-                        label: 'Calls',
-                    ),
-                ],
             ),
         );
     }
