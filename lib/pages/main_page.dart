@@ -30,48 +30,57 @@ class _MainPageState extends State<MainPage> {
             child: Scaffold(            
                 body: _screens[_currentIndex],
             
-                bottomNavigationBar: BottomNavigationBar(
-                    currentIndex: _currentIndex,
-                    onTap: (index) {
-                        setState(() {
-                            _currentIndex = index;
-                        });
-                    },
-            
-                    backgroundColor: Colors.white,
-                    elevation: 0,
-            
-                    selectedItemColor: Color(0xff1dab61), // icon color (selected) - applies to both icon and label
-                    unselectedItemColor: Colors.grey, // icon color (unselected) - applies to both icon and label
-                    
-                    selectedLabelStyle: TextStyle(
-                        color: Colors.black, // this only works with fixedType but it won't work because selectedItemColor overwrites the color. you need to handle it separately
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                    ),
-                    
-                    unselectedLabelStyle: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 12,
-                        fontWeight: FontWeight.normal,
-                    ),
-            
-                    type: BottomNavigationBarType.fixed, // needed to apply text styles
-            
-                    items: [
-                        BottomNavigationBarItem(
-                            icon: Icon(Icons.chat),
-                            label: 'Chats',
+                bottomNavigationBar: Column(
+                    mainAxisSize: MainAxisSize.min, // mainAxisSize: MainAxisSize.min means: ‘Hey Flutter, make this Column just as tall as it needs to be—no extra space!’ It won't stretch to fill the whole screen; it'll shrink-wrap around its children
+                    children: [
+                        Container(
+                            height: 1,
+                            color: Colors.grey[300],
                         ),
-            
-                        BottomNavigationBarItem(
-                            icon: Icon(Icons.update),
-                            label: 'Updates',
-                        ),
-            
-                        BottomNavigationBarItem(
-                            icon: Icon(Icons.call),
-                            label: 'Calls',
+                        BottomNavigationBar(
+                            currentIndex: _currentIndex,
+                            onTap: (index) {
+                                setState(() {
+                                    _currentIndex = index;
+                                });
+                            },
+                                    
+                            backgroundColor: Colors.white,
+                            elevation: 0,
+                                    
+                            selectedItemColor: Color(0xff1dab61), // icon color (selected) - applies to both icon and label
+                            unselectedItemColor: Colors.grey, // icon color (unselected) - applies to both icon and label
+                            
+                            selectedLabelStyle: TextStyle(
+                                color: Colors.black, // this only works with fixedType but it won't work because selectedItemColor overwrites the color. you need to handle it separately
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                            ),
+                            
+                            unselectedLabelStyle: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 12,
+                                fontWeight: FontWeight.normal,
+                            ),
+                                    
+                            type: BottomNavigationBarType.fixed, // needed to apply text styles
+                                    
+                            items: [
+                                BottomNavigationBarItem(
+                                    icon: Icon(Icons.chat),
+                                    label: 'Chats',
+                                ),
+                                    
+                                BottomNavigationBarItem(
+                                    icon: Icon(Icons.update),
+                                    label: 'Updates',
+                                ),
+                                    
+                                BottomNavigationBarItem(
+                                    icon: Icon(Icons.call),
+                                    label: 'Calls',
+                                ),
+                            ],
                         ),
                     ],
                 ),
