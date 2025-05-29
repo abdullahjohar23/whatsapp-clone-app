@@ -22,11 +22,11 @@ class StatusTile extends StatelessWidget {
             child: Row(
                 children: [
                     Container(
-                        padding: EdgeInsets.all(4),
+                        padding: EdgeInsets.all(2),
                         decoration: BoxDecoration(
                             border: Border.all(
                                 color: Colors.green,
-                                width: 3,
+                                width: 2.5,
                             ),
                             borderRadius: BorderRadius.circular(50),
                         ),
