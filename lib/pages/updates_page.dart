@@ -77,7 +77,7 @@ class _StatusPageState extends State<StatusPage> {
                                 ChatTile(imagePath: 'assets/abdullah.jpg', name: 'Add Status', time: '', message: 'Disappears after 24 hours'),
                                 
                                 // status
-                                Text('Recent Updates', style: TextStyle(fontSize: _deviceWidth*0.045, color: Colors.black54, fontWeight: FontWeight.w700)),
+                                Text('Recent Updates', style: TextStyle(fontSize: _deviceWidth*0.04, color: Colors.black54, fontWeight: FontWeight.w700)),
                                 SizedBox(height: _deviceHeight *0.02),
                                 StatusTile(imagePath: 'assets/faysal.png', name: 'Faysal', time: '12:54 AM'),
                                 StatusTile(imagePath: 'assets/emon.png', name: 'Emon', time: '03:12 AM'),
