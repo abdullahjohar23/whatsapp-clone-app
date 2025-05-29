@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_clon_app/pages/single_inbox_design.dart';
+import 'package:whatsapp_clon_app/pages/single_status_design.dart';
 
 class StatusPage extends StatefulWidget {
     const StatusPage({super.key});
@@ -62,38 +64,48 @@ class _StatusPageState extends State<StatusPage> {
             ),
 
             //* Body Section
-            body: SizedBox.expand(
-                child: Stack( // If the body isn't taking up full screen height, the button might be clipped, overlapped, or outside the visible area
-                    children: [
-                        Padding(
-                            padding: EdgeInsets.symmetric(horizontal: _deviceWidth * 0.045),
-                            // Showing Chats 
-                            child: Text(
-                                'Working...'
-                            ),
+            body: Stack( // If the body isn't taking up full screen height, the button might be clipped, overlapped, or outside the visible area
+                children: [
+                    Padding(
+                        padding: EdgeInsets.only(left: _deviceWidth * 0.045, right: _deviceWidth * 0.045, top: _deviceWidth * 0.045),
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                                // profile owner
+                                Text('Status', style: TextStyle(fontSize: _deviceWidth*0.065, fontWeight: FontWeight.bold)),
+                                SizedBox(height: _deviceHeight *0.02),
+                                ChatTile(imagePath: 'assets/abdullah.jpg', name: 'Add Status', time: '', message: 'Disappears after 24 hours'),
+                                
+                                // status
+                                Text('Recent Updates', style: TextStyle(fontSize: _deviceWidth*0.047, color: Colors.black54, fontWeight: FontWeight.w500)),
+                                SizedBox(height: _deviceHeight *0.02),
+                                StatusTile(imagePath: 'assets/faysal.png', name: 'Faysal', time: '12:54 AM'),
+                                StatusTile(imagePath: 'assets/emon.png', name: 'Emon', time: '03:12 AM'),
+                                StatusTile(imagePath: 'assets/taif.png', name: 'Taif', time: '11:11 AM'),
+                            ],
                         ),
-
-                        //* New Message Button
-                        Positioned(
-                            bottom: _deviceHeight * 0.07, // the widget will be 7% of the screen height above the bottom edge
-                            right: _deviceWidth * 0.05, // the widget will be 5% of the screen width from the right edge
-                            
-                            child: Material(
-                                elevation: 3,
-                                borderRadius: BorderRadius.circular(20),
-                                child: Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(20),
-                                        color: Color(0xff1dab61),
-                                    ),
-                                    height: _deviceHeight * 0.08,
-                                    width: _deviceHeight * 0.08,
-                                    child: Icon(Icons.camera_enhance, color: Colors.white, size: _deviceWidth * 0.07),
+                    ),
+            
+                    //* New Message Button
+                    Positioned(
+                        bottom: _deviceHeight * 0.07, // the widget will be 7% of the screen height above the bottom edge
+                        right: _deviceWidth * 0.05, // the widget will be 5% of the screen width from the right edge
+                        
+                        child: Material(
+                            elevation: 3,
+                            borderRadius: BorderRadius.circular(20),
+                            child: Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: Color(0xff1dab61),
                                 ),
+                                height: _deviceHeight * 0.08,
+                                width: _deviceHeight * 0.08,
+                                child: Icon(Icons.camera_enhance, color: Colors.white, size: _deviceWidth * 0.06),
                             ),
                         ),
-                    ],
-                ),
+                    ),
+                ],
             ),
         );
     }
