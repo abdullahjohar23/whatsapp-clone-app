@@ -140,42 +140,6 @@ class _CallsPageState extends State<CallsPage> {
                     ),
                 ],
             ),
-
-            /*
-            body: SizedBox.expand(
-                child: Stack( // If the body isn't taking up full screen height, the button might be clipped, overlapped, or outside the visible area
-                    children: [
-                        Padding(
-                            padding: EdgeInsets.symmetric(horizontal: _deviceWidth * 0.045),
-                            // Showing Chats 
-                            child: Text(
-                                'Working...'
-                            ),
-                        ),
-
-                        // New Message Button
-                        Positioned(
-                            bottom: _deviceHeight * 0.07, // the widget will be 7% of the screen height above the bottom edge
-                            right: _deviceWidth * 0.05, // the widget will be 5% of the screen width from the right edge
-                            
-                            child: Material(
-                                elevation: 3,
-                                borderRadius: BorderRadius.circular(20),
-                                child: Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(20),
-                                        color: Color(0xff1dab61),
-                                    ),
-                                    height: _deviceHeight * 0.08,
-                                    width: _deviceHeight * 0.08,
-                                    child: Icon(MdiIcons.phonePlus, color: Colors.white, size: _deviceWidth * 0.07),
-                                ),
-                            ),
-                        ),
-                    ],
-                ),
-            ),
-            */
         );
     }
 }
