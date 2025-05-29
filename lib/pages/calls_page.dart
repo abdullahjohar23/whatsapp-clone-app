@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:whatsapp_clon_app/pages/single_call_design.dart';
 
 class CallsPage extends StatefulWidget {
     const CallsPage({super.key});
@@ -63,6 +64,84 @@ class _CallsPageState extends State<CallsPage> {
             ),
 
             //* Body Section
+            body: Stack(
+                children: [
+                    Padding(
+                        padding: EdgeInsets.only(left: _deviceWidth * 0.045, right: _deviceWidth * 0.045, top: _deviceWidth * 0.2),
+                        child: Column(
+                            children: [
+                                Center(
+                                    child: Column(
+                                        children: [
+                                        Text('Make private calls', style: TextStyle(color: Colors.black, fontSize: _deviceWidth*0.07, fontWeight: FontWeight.w500)),
+                                        SizedBox(height: _deviceHeight * 0.03),
+                                        Text('Stay connected with secure vide and audio\ncalls to any device',
+                                            style: TextStyle(
+                                                color: Colors.black54, fontSize: _deviceWidth*0.035),
+                                                textAlign: TextAlign.center
+                                            ),
+                                        ],
+                                    ),
+                                ),
+
+                                SizedBox(height: _deviceHeight * 0.06),
+
+                                Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                        Text('Start a call', style: TextStyle(color: Colors.black, fontSize: _deviceWidth*0.06, fontWeight: FontWeight.w700)),
+                                        Material(
+                                            elevation: 2,
+                                            borderRadius: BorderRadius.circular(20),
+
+                                            child: Container(
+                                                padding: EdgeInsets.symmetric(horizontal: _deviceWidth*0.05, vertical: _deviceWidth*0.01),
+                                                decoration: BoxDecoration(
+                                                    color: Colors.grey[200],
+                                                    borderRadius: BorderRadius.circular(20),
+                                                ),
+                                                child: Text('More', style: TextStyle(color: Colors.black, fontSize: _deviceWidth*0.045, fontWeight: FontWeight.w700)),
+                                            ),
+                                        ),
+                                    ],
+                                ),
+
+                                SizedBox(height: _deviceHeight*0.04),
+
+                                Column(
+                                    children: [
+                                        CallTile(imagePath: 'assets/taif.png', name: 'Taif'),
+                                        CallTile(imagePath: 'assets/tanjid.jpg', name: 'Tanjid'),
+                                        CallTile(imagePath: 'assets/emon.png', name: 'Emon'),
+                                        CallTile(imagePath: 'assets/faysal.png', name: 'Faysal'),
+                                    ],
+                                ),
+                            ],
+                        ),
+                    ),
+
+                    Positioned(
+                        bottom: _deviceHeight * 0.07, // the widget will be 7% of the screen height above the bottom edge
+                        right: _deviceWidth * 0.05, // the widget will be 5% of the screen width from the right edge
+                            
+                        child: Material(
+                            elevation: 3,
+                            borderRadius: BorderRadius.circular(20),
+                            child: Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: Color(0xff1dab61),
+                                ),
+                                height: _deviceHeight * 0.08,
+                                width: _deviceHeight * 0.08,
+                                child: Icon(MdiIcons.phonePlus, color: Colors.white, size: _deviceWidth * 0.07),
+                            ),
+                        ),
+                    ),
+                ],
+            ),
+
+            /*
             body: SizedBox.expand(
                 child: Stack( // If the body isn't taking up full screen height, the button might be clipped, overlapped, or outside the visible area
                     children: [
@@ -74,7 +153,7 @@ class _CallsPageState extends State<CallsPage> {
                             ),
                         ),
 
-                        //* New Message Button
+                        // New Message Button
                         Positioned(
                             bottom: _deviceHeight * 0.07, // the widget will be 7% of the screen height above the bottom edge
                             right: _deviceWidth * 0.05, // the widget will be 5% of the screen width from the right edge
@@ -96,6 +175,7 @@ class _CallsPageState extends State<CallsPage> {
                     ],
                 ),
             ),
+            */
         );
     }
 }
