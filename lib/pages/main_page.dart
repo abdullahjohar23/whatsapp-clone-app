@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clon_app/pages/chat_page.dart';
+import 'package:whatsapp_clon_app/pages/updates_page.dart'; // contains StatusPage
 import 'package:whatsapp_clon_app/pages/calls_page.dart';
-import 'package:whatsapp_clon_app/pages/updates_page.dart';
 
 class MainPage extends StatefulWidget {
     const MainPage({super.key});
@@ -11,75 +11,76 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-    int _currentIndex = 0; 
+    int _currentIndex = 0;
 
-    final List<Widget> _screens = [
-        ChatPage(),
-        StatusPage(),
-        CallsPage()
-    ];
+    final PageController _pageController = PageController(initialPage: 0);
+
+    void _onPageChanged(int index) {
+        setState(() {
+        _currentIndex = index;
+        });
+    }
+
+    void _onItemTapped(int index) {
+        _pageController.animateToPage(
+        index,
+        duration: const Duration(milliseconds: 100),
+        curve: Curves.easeInOut,
+        );
+    }
 
     @override
     Widget build(BuildContext context) {
         return Theme(
             data: Theme.of(context).copyWith(
-                splashColor: Colors.transparent, // removes ripple/splash color
-                highlightColor: Colors.transparent, // removes highlight on tap
+                splashColor: Colors.transparent,
+                highlightColor: Colors.transparent,
             ),
             
-            child: Scaffold(            
-                body: _screens[_currentIndex],
-            
+            child: Scaffold(
+                body: PageView(
+                    controller: _pageController,
+                    onPageChanged: _onPageChanged,
+                    children: const [
+                        ChatPage(),
+                        StatusPage(), // make sure this exists
+                        CallsPage(),
+                    ],
+                ),
+                
                 bottomNavigationBar: Column(
-                    mainAxisSize: MainAxisSize.min, // mainAxisSize: MainAxisSize.min means: ‘Hey Flutter, make this Column just as tall as it needs to be—no extra space!’ It won't stretch to fill the whole screen; it'll shrink-wrap around its children
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                         Container(
-                            height: 1,
-                            color: Colors.grey[300],
+                            // thin horizontal line at the top of the bottomnavbar
+                            height: 1, color: Colors.grey[300],
                         ),
+                        
                         BottomNavigationBar(
                             currentIndex: _currentIndex,
-                            onTap: (index) {
-                                setState(() {
-                                    _currentIndex = index;
-                                });
-                            },
-                                    
+                            onTap: _onItemTapped,
                             backgroundColor: Colors.white,
                             elevation: 0,
-                                    
-                            selectedItemColor: Color(0xff1dab61), // icon color (selected) - applies to both icon and label
-                            unselectedItemColor: Colors.grey, // icon color (unselected) - applies to both icon and label
                             
-                            selectedLabelStyle: TextStyle(
-                                color: Colors.black, // this only works with fixedType but it won't work because selectedItemColor overwrites the color. you need to handle it separately
+                            selectedItemColor: Color(0xff1dab61),
+                            unselectedItemColor: Colors.grey,
+                            
+                            selectedLabelStyle: const TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,
                             ),
                             
-                            unselectedLabelStyle: TextStyle(
-                                color: Colors.grey,
+                            unselectedLabelStyle: const TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.normal,
                             ),
-                                    
-                            type: BottomNavigationBarType.fixed, // needed to apply text styles
-                                    
-                            items: [
-                                BottomNavigationBarItem(
-                                    icon: Icon(Icons.chat),
-                                    label: 'Chats',
-                                ),
-                                    
-                                BottomNavigationBarItem(
-                                    icon: Icon(Icons.update),
-                                    label: 'Updates',
-                                ),
-                                    
-                                BottomNavigationBarItem(
-                                    icon: Icon(Icons.call),
-                                    label: 'Calls',
-                                ),
+                            
+                            type: BottomNavigationBarType.fixed,
+                            
+                            items: const [
+                                BottomNavigationBarItem(icon: Icon(Icons.chat), label: 'Chats'),
+                                BottomNavigationBarItem(icon: Icon(Icons.update), label: 'Updates'),
+                                BottomNavigationBarItem(icon: Icon(Icons.call), label: 'Calls'),
                             ],
                         ),
                     ],
