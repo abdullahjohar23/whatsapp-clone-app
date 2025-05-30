@@ -17,15 +17,15 @@ class _MainPageState extends State<MainPage> {
 
     void _onPageChanged(int index) {
         setState(() {
-        _currentIndex = index;
+            _currentIndex = index;
         });
     }
 
     void _onItemTapped(int index) {
         _pageController.animateToPage(
-        index,
-        duration: const Duration(milliseconds: 100),
-        curve: Curves.easeInOut,
+            index,
+            duration: const Duration(milliseconds: 50),
+            curve: Curves.easeInOut,
         );
     }
 
@@ -58,8 +58,8 @@ class _MainPageState extends State<MainPage> {
                         
                         BottomNavigationBar(
                             currentIndex: _currentIndex,
-                            onTap: _onItemTapped,
                             backgroundColor: Colors.white,
+                            onTap: _onItemTapped,
                             elevation: 0,
                             
                             selectedItemColor: Color(0xff1dab61),
