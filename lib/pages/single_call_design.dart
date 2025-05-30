@@ -24,20 +24,20 @@ class CallTile extends StatelessWidget {
                             children: [
                                 ClipRRect(
                                     borderRadius: BorderRadius.circular(50),
-                                    child: Image.asset(imagePath, height: deviceWidth *0.14, width: deviceWidth *0.14, fit: BoxFit.cover,),
+                                    child: Image.asset(imagePath, height: deviceWidth *0.13, width: deviceWidth *0.13, fit: BoxFit.cover,),
                                 ),
                                 
                                 SizedBox(width: deviceWidth*0.05),
                                 
-                                Text(name, style: TextStyle(color: Colors.black, fontSize: deviceWidth*0.055, fontWeight: FontWeight.w400)),
+                                Text(name, style: TextStyle(color: Colors.black, fontSize: deviceWidth*0.05, fontWeight: FontWeight.w400)),
                             ],
                         ),
 
                         Row(
                             children: [
-                                Icon(Icons.call_outlined, size: deviceWidth*0.075),
+                                Icon(Icons.call_outlined, size: deviceWidth*0.065),
                                 SizedBox(width: deviceWidth*0.09),
-                                Icon(Icons.videocam_outlined, size: deviceWidth*0.075),                                                            
+                                Icon(Icons.videocam_outlined, size: deviceWidth*0.065),                                                            
                             ],
                         ),
                     ],
