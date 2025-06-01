@@ -1,16 +1,19 @@
-# whatsapp_clon_app
+# 💬 WhatsApp Clone (Flutter)
 
-A new Flutter project.
+A Flutter-based WhatsApp UI clone with support for chats, status, calls, and more. Built with clean design, scalable widget structure, and responsive layouts — inspired by the real WhatsApp.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## ✨ Features
 
-A few resources to get you started if this is your first Flutter project:
+- 🔐 Splash screen with custom image
+- 📱 Custom app icon
+- 💬 Chat UI with message bubbles
+- 🧾 Status screen layout
+- 📞 Calls screen placeholder
+- 🔄 Bottom navigation bar (Chats, Status, Calls)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 📱 Output
+![Image](https://github.com/user-attachments/assets/cee9cd65-8857-4bf8-8249-eabf3bba8534)
